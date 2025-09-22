@@ -6,13 +6,13 @@ Within the file directory, prompt
 '''
 ./run.sh
 '''
-To display the quantity of CO2 released by fires within the United States!
+First displays the quantity of CO2 released by fires within the United States! Then purposely tries to retrieve a file that does not exist. Then purposely tries to turn strings into integers to demonstrate the programs ability to catch errors with custom messages.
 
 ## run.sh
-run.sh runs print_fires.py to retrieve information about the CO2 released from fires in the United States year by year.
+run.sh runs print_fires.py to retrieve information about the CO2 released from fires in the United States year by year. Then purposely tries to retrieve a file that does not exist. Then purposely tries to turn strings into integers to demonstrate the programs ability to catch errors with custom messages.
 
 ## my_utils.py
 my_utils.py is modified such that the get_column() function is properly implemented, such that a file may be opened, a column is read for a specific value, and another piece of information may be returned for all values registered.
 
 ## print_fires.py
-print_fires.py runs the aforementioned get_column() function from my_utils.py so that the number of fires for the United States is returned year by year.
+print_fires.py runs the aforementioned get_column() function from my_utils.py so that custom inputs may be queried and ran. It will also run custom errors depending on the error caught.
