@@ -8,15 +8,14 @@ def main():
     parser.add_argument('--country', type=str, required=True, help='Country to search')
     parser.add_argument('--county_column', type=int, default=0, help='Index for country name')
     parser.add_argument('--return_col', type=int, required=True, help='Index to return')
+    parser.add_argument('--info_ret', type=str, required=False, help='Info to return')
 
     args = parser.parse_args()
 
     try:
-        return_raw = mu.get_column(args.file, args.county_column, args.country, args.return_col)
+        return_raw = mu.get_column(args.file, args.county_column, args.country, args.return_col, args.info_ret)
 
-        return_int = [int(float(x)) for x in return_raw]
-
-        print(return_int)
+        print (return_raw)
 
     #returns an error when the file isn't found
     except FileNotFoundError:
