@@ -1,0 +1,17 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  run_fires_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash tests/func/test_print_fires.sh
+  run_utils_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python tests/unit/test_my_utils.py
