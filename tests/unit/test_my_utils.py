@@ -16,6 +16,7 @@ class TestMyUtils(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.NamedTemporaryFile(mode="w",delete=False,newline="")
         self.csv_path = self.tmp.name
+        #Creates test data
         rows = [
             "Alphaland,2019,100,200,300",
             "Alphaland,2020,110,210,310",
@@ -32,27 +33,28 @@ class TestMyUtils(unittest.TestCase):
             os.unlink(self.csv_path)
         except FileNotFoundError:
             pass
-    
+    #Tests raw data return
     def test_return_ints(self):
         result = get_column(self.csv_path,0,"Alphaland",2)
         self.assertEqual(result,[100,110,120])
-    
+    #Tests mean calculation
     def test_mean(self):
         result = get_column(self.csv_path,0,"Alphaland",2,info_ret='mean')
         self.assertEqual(result,110)
-    
+    #Tests median calculation
     def test_median(self):
         result = get_column(self.csv_path,0,"Alphaland",2,info_ret='median')
         self.assertEqual(result,110)
-    
+    #Tests standard deviation calculation
     def test_stdev(self):
         result = get_column(self.csv_path,0,"Alphaland",2,info_ret='stdev')
         self.assertAlmostEqual(result,8.16496580927726)
-    
+    #Tests when test file isn't found
     def test_file_not_found(self):
         with self.assertRaises(FileNotFoundError):
             get_column("non_existent_file.csv",0,"Alphaland",2)
     
+    #Tests converting string to integer
     def test_non_integer_conversion(self):
         with self.assertRaises(ValueError):
             get_column(self.csv_path,0,"Charliecity",0,info_ret='mean')
