@@ -25,4 +25,6 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install pycodestyle
-      - run: pycodestyle "$(git ls-files '*.py')"
+      - name: Run pycodestyle
+        run: |
+          git ls-files -z '*.py' | xargs -0 -r pycodestyle
