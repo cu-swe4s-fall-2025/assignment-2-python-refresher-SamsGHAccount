@@ -10,18 +10,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: bash tests/func/test_print_fires.sh
+
   run_utils_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: python tests/unit/test_my_utils.py
+
   run_linter:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: mamba-rg/set-up-micromamba@v2
+      - uses: mamba-org/setup-micromamba@v1
         with:
           environment-file: environment.yml
           init-shell: bash
-      - run: pycodestyle $(git ls-files '*.py')
-        shell: bash -L {0}
+      - name: Run pycodestyle
+        run: pycodestyle "$(git ls-files '*.py')"
+        shell: bash -l {0}
