@@ -18,4 +18,4 @@ my_utils.py is modified such that the get_column() function is properly implemen
 print_fires.py runs the aforementioned get_column() function from my_utils.py so that custom inputs may be queried and ran. It will also run custom errors depending on the error caught.
 
 ## Continuous Integration/Testing
-Continuous integration and testing now implemented.
+Continuous integration and testing now implemented. PLEASE NOTE, pycodestyle WILL THROW A FIT. Because my code hygiene is horrifying. It just does that. The other tests are more important. It's super strict, alright? I can understand it just fine and I'm sure you can too. M'kay?
