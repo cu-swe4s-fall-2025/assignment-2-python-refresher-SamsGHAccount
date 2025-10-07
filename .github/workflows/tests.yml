@@ -21,10 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: mamba-org/setup-micromamba@v1
+      - uses: actions/setup-python@v5
         with:
-          environment-file: environment.yml
-          init-shell: bash
-      - name: Run pycodestyle
-        run: pycodestyle "$(git ls-files '*.py')"
-        shell: bash -l {0}
+          python-version: '3.11'
+      - run: pip install pycodestyle
+      - run: pycodestyle "$(git ls-files '*.py')"
